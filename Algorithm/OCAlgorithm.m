@@ -33,7 +33,7 @@
     NSString *r5 = [self r5:@"fadbawea"];
     NSLog(@"r5：%@", r5);
     
-    // 第五题
+    // 第六题
     NSString *r6 = [self r6:@"PAYPALISHIRING" :3];
     NSLog(@"r6：%@", r6);
 }
