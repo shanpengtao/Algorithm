@@ -36,6 +36,10 @@
     // 第六题
     NSString *r6 = [self r6:@"PAYPALISHIRING" :3];
     NSLog(@"r6：%@", r6);
+    
+    // 第七题
+    long r7 = [self r7:-16158];
+    NSLog(@"r7：%ld", r7);
 }
 
 /*
@@ -218,6 +222,7 @@ static NSInteger maxLength = 0;
         j++;
     }
 }
+
 /*
  6. Z 字形变换
  将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
@@ -244,6 +249,34 @@ static NSInteger maxLength = 0;
     }
     
     return [array componentsJoinedByString:@""];
+}
+
+/*
+ 7. 整数反转
+ 给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
+ 如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。
+ 假设环境不允许存储 64 位整数（有符号或无符号）。
+ 提示：
+ -231 <= x <= 231 - 1
+ 示例 1：
+ 输入：x = 123
+ 输出：321
+ */
+- (NSInteger)r7:(NSInteger)x
+{
+    NSInteger res = 0;
+    
+    while (x != 0) {
+        NSInteger digit = x % 10;
+        x = x / 10;
+        res = res * 10 + digit;
+    }
+    
+    if (res < pow(-2, 31) || res > pow(2, 31) - 1) {
+        res = 0;
+    }
+    
+    return res;
 }
 
 @end
