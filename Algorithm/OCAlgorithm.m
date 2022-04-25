@@ -32,6 +32,10 @@
     // 第五题
     NSString *r5 = [self r5:@"fadbawea"];
     NSLog(@"r5：%@", r5);
+    
+    // 第五题
+    NSString *r6 = [self r6:@"PAYPALISHIRING" :3];
+    NSLog(@"r6：%@", r6);
 }
 
 /*
@@ -213,6 +217,33 @@ static NSInteger maxLength = 0;
         i--;
         j++;
     }
+}
+/*
+ 6. Z 字形变换
+ 将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
+ 比如输入字符串为 "PAYPALISHIRING" 行数为 3 时，排列如下：
+ P   A   H   N
+ A P L S I I G
+ Y   I   R
+ 之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如："PAHNAPLSIIGYIR"。
+ */
+- (NSString *)r6:(NSString *)s :(int)numRows
+{
+    int tmp = 0;
+    int flag = -1;
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (long i = 0; i < s.length; i++) {
+        NSString *cStr = [s substringWithRange:NSMakeRange(i, 1)];
+        NSString *str = [NSString stringWithFormat:@"%@%@", (tmp < array.count ? array[tmp] : @""), cStr];
+        array[tmp] = str;
+        if (tmp == 0 || tmp == numRows - 1) {
+            flag = -flag;
+        }
+        tmp += flag;
+    }
+    
+    return [array componentsJoinedByString:@""];
 }
 
 @end
